@@ -53,7 +53,7 @@
   display:flex;
   gap:22px;
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
+  scroll-snap-type:none;
   scrollbar-width:none;
   padding-bottom:15px
 }
@@ -63,7 +63,7 @@
 .card {
   flex:0 0 calc((100% - 44px)/3);
   min-width:0;
-  scroll-snap-align:start
+  scroll-snap-align:none
 }
 .card>img {
   width:100%;
@@ -277,9 +277,9 @@
 .site-header nav>a:not(.button) { font-family:var(--body); font-weight:400; }
 .faq summary { font-family:var(--body); font-weight:400; }
 .site-footer { background:var(--yellow); }
-.social-links { gap:12px; align-items:center; flex-wrap:nowrap; }
-.social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:40px; flex-shrink:0; }
-.social-links svg { width:36px; height:36px; fill:currentColor; }
+.social-links { gap:12px; align-items:center; flex-wrap:wrap; }
+.social-links a { display:inline-flex; align-items:center; justify-content:center; width:44px; height:48px; flex-shrink:0; }
+.social-links svg { width:64px; height:64px; max-width:none; flex-shrink:0; fill:currentColor; }
 .social-links a:hover { color:var(--orange); }
 .carousel-track { cursor:grab; }
 .carousel-track.is-dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
@@ -288,3 +288,18 @@
 .photo-strip { gap:0; padding:0; }
 .photo-strip img { height:clamp(200px,29vw,400px); }
 @media(max-width:800px) { .photo-strip { gap:0; padding:0; } .photo-strip img { height:220px; } }
+
+/* Footer and FAQ proportions. */
+.site-footer>div:first-child h2 { font-size:36px; }
+.faq h2 { font-size:44px; max-width:10em; align-self:start; }
+.faq summary { font-size:22px; }
+.faq details>div { font-size:18px; }
+@media(max-width:800px) {
+  .site-footer>div:first-child h2 { font-size:32px; }
+  .faq h2 { font-size:36px; }
+}
+
+/* Bring the wider FAQ list closer to its heading on desktop. */
+@media(min-width:801px) {
+  .faq { grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr); gap:36px; }
+}

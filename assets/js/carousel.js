@@ -1,10 +1,43 @@
 /** Mouse dragging enhances native touch scrolling and keyboard access. */
 export function initCarousels() {
-  document.querySelectorAll('[data-carousel]').forEach(root => {
+  document.querySelectorAll('[data-carousel]').forEach((root, index) => {
     const track = root.querySelector('.carousel-track');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     let gesture = null;
     let suppressClick = false;
+
+    // Buttons and keyboard navigation share the actual spacing between cards.
+    const move = direction => {
+      const cards = track.querySelectorAll('.card');
+      if (!cards.length) return;
+      const first = cards[0].getBoundingClientRect();
+      const step = cards.length > 1
+        ? cards[1].getBoundingClientRect().left - first.left
+        : first.width;
+      track.scrollBy({ left:direction * step,
+        behavior:reduced.matches ? 'instant' : 'smooth' });
+    };
+    track.id ||= `carousel-track-${index + 1}`;
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    const buttons = [-1, 1].map(direction => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', direction < 0 ? 'Previous items' : 'Next items');
+      button.setAttribute('aria-controls', track.id);
+      button.textContent = direction < 0 ? '‹' : '›';
+      button.addEventListener('click', () => move(direction));
+      controls.append(button);
+      return button;
+    });
+    root.append(controls);
+    const updateButtons = () => {
+      buttons[0].disabled = track.scrollLeft <= 1;
+      buttons[1].disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    };
+    track.addEventListener('scroll', updateButtons, { passive:true });
+    new ResizeObserver(updateButtons).observe(track);
+    updateButtons();
 
     track.addEventListener('dragstart', event => event.preventDefault());
     track.addEventListener('pointerdown', event => {
@@ -48,11 +81,7 @@ export function initCarousels() {
       suppressClick = false;
       if (event.target !== track || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
       event.preventDefault();
-      const card = track.querySelector('.card');
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      const step = card.getBoundingClientRect().width + gap;
-      track.scrollBy({ left: event.key === 'ArrowLeft' ? -step : step,
-        behavior: reduced.matches ? 'instant' : 'smooth' });
+      move(event.key === 'ArrowLeft' ? -1 : 1);
     });
   });
 }
