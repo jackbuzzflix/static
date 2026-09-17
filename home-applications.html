@@ -49,13 +49,36 @@
 <section class="section application-section" id="apply" aria-labelledby="application-title">
  <div class="application-intro">
   <p class="application-eyebrow">Buzzflix 2027</p>
-  <h2 id="application-title">Your next summer starts here.</h2>
-  <p>Apply to join the Buzzflix team. Tell us who you are, what you’ve done, and where you’d like to get involved.</p>
-  <p>Make it yours. We’d love to see your personality, your ideas, and what you could bring to a film set.</p>
+  <h2 id="application-title">The Best Summer Job Ever.</h2>
+  <p class="application-intro-desktop">Spend your summer making real feature films with Buzzflix. Bring your ideas, try something new, and find your place on set.</p>
+  <p class="application-intro-mobile">Earn $250 a day making feature films with Buzzflix. Tell us about yourself below.</p>
+  <dl class="application-benefits">
+   <div>
+    <dt>$250 a day. Every role.</dt>
+    <dd>Earn a flat $250 per day, no matter your role on the student crew.</dd>
+   </div>
+   <div>
+    <dt>Four films. One summer.</dt>
+    <dd>Have the opportunity to work on up to four feature films shooting in Windsor, Ontario.</dd>
+   </div>
+   <div>
+    <dt>A chance to switch roles.</dt>
+    <dd>Apply for a different role on each film. Explore new departments and discover what you love doing.</dd>
+   </div>
+   <div>
+    <dt>Learn from the people making films.</dt>
+    <dd>Work alongside industry mentors and build experience on a real film set.</dd>
+   </div>
+  </dl>
+  <p class="application-intro-desktop">Ready to join us? Tell us who you are, what you’ve done, and where you’d like to get involved.</p>
  </div>
  <div class="application-panel">
   <p class="application-preview-note" id="application-preview-note">Preview only. Applications are not being sent yet.</p>
-  <form class="application-form" data-application-form data-endpoint="" method="post" action="#apply" enctype="multipart/form-data" aria-describedby="application-preview-note">
+  <form class="application-form" data-application-form method="post" action="#apply" aria-describedby="application-preview-note">
+   <div class="application-honeypot" aria-hidden="true">
+    <label for="applicant-website">Leave this field empty</label>
+    <input id="applicant-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="500">
+   </div>
    <div class="application-fields">
     <div class="application-field">
      <label for="applicant-name">Name <span>(required)</span></label>
@@ -85,21 +108,20 @@
      <div class="application-field application-extra-roles"><label for="applicant-extra-roles">Any other roles? <span>(optional)</span></label><input id="applicant-extra-roles" name="additional_roles" type="text" maxlength="500"></div>
     </fieldset>
     <div class="application-field application-field-wide application-video">
-     <label for="applicant-video">A one-minute video of you <span>(required)</span></label>
+     <label for="applicant-video">A one-minute video of you <span>(coming soon)</span></label>
      <p class="application-help" id="video-help">Tell us why you want to join Buzzflix, what you’d add to the team, your relevant experience, and anything else you’d like us to know. Creative submissions are appreciated!</p>
-     <p class="application-help" id="video-format">Upload an MP4, MOV, or WebM video. Maximum file size: 100 MB.</p>
-     <input id="applicant-video" name="video" type="file" accept=".mp4,.mov,.webm,video/mp4,video/quicktime,video/webm" aria-describedby="video-help video-format video-selection" required>
-     <p class="application-help application-file-selection" id="video-selection" aria-live="polite"></p>
+     <p class="application-help" id="video-format">Video uploads are not available yet. This form currently submits your written application only.</p>
+     <input id="applicant-video" name="video" type="file" accept=".mp4,.mov,.webm,video/mp4,video/quicktime,video/webm" aria-describedby="video-help video-format" disabled>
     </div>
    </div>
    <label class="application-consent" for="applicant-consent">
     <input id="applicant-consent" name="consent" type="checkbox" value="agreed" required>
-    <span>By submitting, I agree to transfer ownership of the rights I hold in my video to Buzzflix, including permission to edit, reproduce, and publish it. I confirm I have permission to include all material in the video, my application is accurate, and Buzzflix may use my details to assess my application and contact me.</span>
+    <span>By submitting, I confirm my application is accurate and agree that Buzzflix may use my details to assess my application and contact me about it.</span>
    </label>
    <p class="application-error" id="application-error" role="alert" hidden></p>
    <button class="button application-submit" type="submit" disabled>Preview submission</button>
    <p class="application-help application-submit-status" role="status" aria-live="polite"></p>
-   <noscript><p>This application form needs JavaScript to validate the video and submit. Please enable JavaScript in your browser.</p></noscript>
+   <noscript><p>This application form needs JavaScript to submit. Please enable JavaScript in your browser.</p></noscript>
   </form>
   <div class="application-confirmation" data-application-confirmation hidden>
    <p class="application-eyebrow" data-confirmation-eyebrow></p>
@@ -110,6 +132,7 @@
   </div>
  </div>
 </section>
+<!--
 <section aria-labelledby="updates-title" class="section updates">
  <h2 class="section-title" id="updates-title">
   Updates
@@ -174,6 +197,7 @@
   </div>
  </div>
 </section>
+-->
 <section class="section partners">
  <h2 class="section-title">
   Official Partners
@@ -188,6 +212,7 @@
   <img alt="Partner: bakertill+(1)" decoding="async" loading="lazy" src="assets/images/bakertill-1--c5bbf0e.png" style="object-position:50.0% 50.0%"/>
   <img alt="Partner: theWorkbook-logo" decoding="async" loading="lazy" src="assets/images/theworkbook-logo-025cd35.png" style="object-position:50.0% 50.0%"/>
   <img alt="Partner: Ontario-Camera-Logo-White-B" decoding="async" loading="lazy" src="assets/images/ontario-camera-logo-white-b-909fa6a.png" style="object-position:50.0% 50.0%"/>
+  <img alt="WIFT+ — Women in Film &amp; Television Toronto" class="partner-logo-wift" decoding="async" loading="lazy" src="assets/images/WIFT-logo-black.png"/>
  </div>
 </section>
 <section aria-label="Behind the scenes" class="photo-strip">
